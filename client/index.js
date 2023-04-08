@@ -24,7 +24,8 @@ app.use(require("./routes/root"))
     res.render("./indexFile/index")
 });*/
 
+const port= parseInt(process.env.PORT);
 
 
 //Server running on 3000.
-app.listen(3000, () => console.log(`Client started listening on port: ${process.env.PORT}`));
+app.listen(port, () => console.log(`Client started listening on port: ${port}`));
