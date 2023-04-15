@@ -8,7 +8,6 @@ const app= express();
 // connection to mongoDB
 mongoConnection()
 
-
 //using ejs as engine
 //middleware.
 app.set('views', path.join(__dirname, 'views'));
@@ -16,11 +15,14 @@ app.use(express.static("public"))
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
-app.use(express.urlencoded({extended:true}));
+//middlewares
+app.use(express.urlencoded({extended: true}));
 
-//server running on port 5000.
-const port= parseInt(process.env.PORT);
-app.listen(port, ()=>console.log(`Server started listening on port: ${port}`));
+app.use(require("./routes/addUser"));
 app.get("/",async (req,res)=>{
     res.send(`Hello from server.`)
 });
+
+
+const port= parseInt(process.env.PORT);
+app.listen(port, ()=>console.log(`Server started listening on port: ${port}`));
