@@ -4,7 +4,7 @@ const MONGOURI=process.env.MONGO_URL;
 
 connect = async () => {
     try {
-        //database = pos-system
+        //database = e-commerce
         await mongoose.connect(MONGOURI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
